@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="flex flex-col justify-center items-center pt-16">
+    <section class="sliders flex flex-row pt-24">
+        <div class="slidecontainer flex flex-row items-center">
+            <p class="px-4">Size:</p>
+            <input type="range" min="5" max="1000" value="25" class="slider appearance-none h-3 w-60 bg-gray-200 rounded-lg" id="sizeSlider">
+            <p class="px-4" id="sizeSliderValue"></p>
+        </div>
+
+        <div class="slidecontainer flex flex-row items-center">
+            <p class="px-4">Speed:</p>
+            <input type="range" min="1" max="100" value="50" class="slider appearance-none h-3 w-60 bg-gray-200 rounded-lg" id="speedSlider">
+            <p class="px-4" id="speedSliderValue"></p>
+        </div>
+    </section>
+
+    <section class="algorithms flex flex-row pt-24">
+        <button id="generate" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-red-400">Generate Array</button>
+        <button id="bubble" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Bubble Sort</button>
+        <button id="merge" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Merge Sort</button>
+        <button id="quick" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Quick Sort</button>
+        <button id="heap" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Heap Sort</button>
+    </section>
+
+    <script src="slider.js"></script>
+    <script src="generate-array.js"></script>
+    <script src="generate-histogram.js"></script>
+    <script src="mergesort.js"></script>
+    <script>
+        var arr = [];
+
+        document.getElementById("generate").onclick = function() {
+            arr = generateArray(arr, document.getElementById("sizeSlider").value);
+        }
+
+        document.getElementById("merge").onclick = function() {
+            mergeSort(arr);
+            generateHistogram(arr);
+            console.log(arr);
+        }
+    </script>
+
+    <section class="visualization my-16 flex flex-row items-end bg-gray-200 h-96 w-4/6 text-base">
+
+    </section>
+</body>
+
+</html>
