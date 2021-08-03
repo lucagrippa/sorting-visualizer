@@ -1,47 +1,48 @@
-function less(a, b) {
-    if (a < b) {
-        return true;
-    } else {
-        return false;
-    }
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function merge(arr, tmpArr, lo, mid, hi) {
-
-    for (k = lo; k <= hi; k++) { // first we copy over the array to our tmp array
+async function merge(arr, tmpArr, lo, mid, hi) {
+    for (let k = lo; k <= hi; k++) { // first we copy over the array to our tmp array
         tmpArr[k] = arr[k];
     }
 
-    i = lo; // keeps index of left side of tmp array
-    j = mid + 1; // keeps index of right side of tmp array
+    let left = lo; // keeps index of left side of tmp array
+    let right = mid + 1; // keeps index of right side of tmp array
 
-    for (l = lo; l <= hi; l++) { // l keeps the index of the sorted array
-        if (i > mid) { // will merge remaining values in right side of array
-            arr[l] = tmpArr[j];
-            j++;
-        } else if (j > hi) { // will merge remaining values in left side of array
-            arr[l] = tmpArr[i];
-            i++;
-        } else if (less(tmpArr[i], tmpArr[j])) { // checks if value in left array is less than value in right array
-            arr[l] = tmpArr[i];
-            i++;
+    for (index = lo; index <= hi; index++) { // index keeps the index of the sorted array
+        if (left > mid) { // will merge remaining values in right side of array
+            arr[index] = tmpArr[right];
+            right++;
+        } else if (right > hi) { // will merge remaining values in left side of array
+            arr[index] = tmpArr[left];
+            left++;
+        } else if (tmpArr[left] < tmpArr[right]) { // checks if value in left array is less than value in right array
+            arr[index] = tmpArr[left];
+            left++;
         } else {
-            arr[l] = tmpArr[j];
-            j++;
+            arr[index] = tmpArr[right];
+            right++;
         }
+
+        await sleep(50);
+        generateHistogram(arr);
     }
 }
 
-function sort(arr, tmpArr, lo, hi) {
-    if (lo < hi) {
-        mid = lo + ((hi - lo) / 2);
-        sort(arr, tmpArr, lo, mid);
-        sort(arr, tmpArr, mid + 1, hi);
-        merge(arr, tmpArr, lo, mid, hi);
+async function mergeSortRecursive(arr, tmpArr, lo, hi) {
+    if (lo >= hi) { // gets rid of edge case where array has 1 element
+        return;
     }
+
+    let mid = lo + Math.floor((hi - lo) / 2);
+    await mergeSortRecursive(arr, tmpArr, lo, mid);
+    await mergeSortRecursive(arr, tmpArr, (mid + 1), hi);
+    await merge(arr, tmpArr, lo, mid, hi);
 }
 
 function mergeSort(arr) {
-    tmpArr = [];
-    sort(arr, tmpArr, 0, arr.length - 1);
+    let tmpArr = [];
+    mergeSortRecursive(arr, tmpArr, 0, (arr.length - 1));
+    generateHistogram(arr);
 }

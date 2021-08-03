@@ -25,34 +25,47 @@
     </section>
 
     <section class="algorithms flex flex-row pt-24">
-        <button id="generate" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-red-400">Generate Array</button>
+        <button id="generate" class=" mx-10 py-3 px-4 rounded-3xl border-4 hover:border-blue-300 border-green-500">Generate Array</button>
         <button id="bubble" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Bubble Sort</button>
         <button id="merge" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Merge Sort</button>
         <button id="quick" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Quick Sort</button>
         <button id="heap" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Heap Sort</button>
     </section>
 
-    <script src="slider.js"></script>
-    <script src="generate-array.js"></script>
-    <script src="generate-histogram.js"></script>
-    <script src="mergesort.js"></script>
-    <script>
-        var arr = [];
-
-        document.getElementById("generate").onclick = function() {
-            arr = generateArray(arr, document.getElementById("sizeSlider").value);
-        }
-
-        document.getElementById("merge").onclick = function() {
-            mergeSort(arr);
-            generateHistogram(arr);
-            console.log(arr);
-        }
-    </script>
-
     <section class="visualization my-16 flex flex-row items-end bg-gray-200 h-96 w-4/6 text-base">
 
     </section>
+
+    <script src="slider.js"></script>
+    <script src="generate-histogram.js"></script>
+    <script src="generate-array.js"></script>
+    <script src="mergesort.js"></script>
+    <script src="quicksort.js"></script>
+    <script>
+        var arr = [];
+
+        arr = generateArray(arr, 25);
+
+        document.getElementById("generate").onclick = function() {
+            arr = generateArray(arr, parseInt(document.getElementById("sizeSlider").value));
+        }
+
+        document.getElementById("merge").onclick = function() {
+            console.log("Merging array:" + arr);
+            mergeSort(arr);
+            //generateHistogram(arr);
+
+        }
+
+        document.getElementById("quick").onclick = function() {
+            console.log("Merging array:" + arr);
+            quickSort(arr);
+            //generateHistogram(arr);
+
+        }
+    </script>
+
+
 </body>
 
 </html>

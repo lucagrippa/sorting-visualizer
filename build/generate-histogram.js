@@ -3,7 +3,7 @@ function generateHistogram(arr) {
 
     container.querySelectorAll('.block').forEach(e => e.remove());
 
-    for (i = 0; i < arr.length; i++) {
+    for (var i = 0; i < arr.length; i++) {
         const block = document.createElement("div");
         block.classList.add("block");
         block.classList.add("text-center");
