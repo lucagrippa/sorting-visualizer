@@ -21,24 +21,16 @@ async function merge(colors, arr, tmpArr, lo, mid, hi) {
     for (index = lo; index <= hi; index++) { // index keeps the index of the sorted array
         if (left > mid) { // will merge remaining values in right side of array
             arr[index] = tmpArr[right];
-            //colors[right] = -1;
             right++;
-            //colors[right] = 0;
         } else if (right > hi) { // will merge remaining values in left side of array
             arr[index] = tmpArr[left];
-            //colors[left] = -1;
             left++;
-            //colors[left] = 0;
         } else if (tmpArr[left] < tmpArr[right]) { // checks if value in left array is less than value in right array
             arr[index] = tmpArr[left];
-            //colors[left] = -1;
             left++;
-            //colors[left] = 0;
         } else {
             arr[index] = tmpArr[right];
-            //colors[right] = -1;
             right++;
-            //colors[right] = 0;
         }
 
         await sleep(parseInt(document.getElementById("speedSlider").value));
@@ -68,3 +60,10 @@ async function mergeSort(arr) {
 
     generateHistogramWithColors(arr, colors);
 }
+
+// implement compare two sorting algos function with 
+// await Promise.all([]);
+// await Promise.all([
+//      quicksort(arr),
+//      mergesort(arr)
+//]);
