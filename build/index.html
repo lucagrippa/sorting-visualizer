@@ -10,29 +10,33 @@
 </head>
 
 <body class="flex flex-col justify-center items-center pt-16">
-    <section class="sliders flex flex-row pt-24">
+    <section class="sliders flex flex-row py-4 mt-24 justify-center items-center w-4/6 border-8 border-gray-200 rounded-2xl">
+        <button id="generate" class=" mx-10 py-3 px-4 rounded-3xl border-4 hover:border-blue-300 border-green-500">Generate Array</button>
+
         <div class="slidecontainer flex flex-row items-center">
             <p class="px-4">Size:</p>
-            <input type="range" min="5" max="1000" value="25" class="slider appearance-none h-3 w-60 bg-gray-200 rounded-lg" id="sizeSlider">
+            <input type="range" min="5" max="1000" value="50" class="slider appearance-none h-3 w-60 bg-gray-200 rounded-lg" id="sizeSlider">
             <p class="px-4" id="sizeSliderValue"></p>
         </div>
 
-        <div class="slidecontainer flex flex-row items-center">
-            <p class="px-4">Speed:</p>
-            <input type="range" min="1" max="100" value="50" class="slider appearance-none h-3 w-60 bg-gray-200 rounded-lg" id="speedSlider">
-            <p class="px-4" id="speedSliderValue"></p>
-        </div>
     </section>
 
-    <section class="algorithms flex flex-row pt-24">
-        <button id="generate" class=" mx-10 py-3 px-4 rounded-3xl border-4 hover:border-blue-300 border-green-500">Generate Array</button>
+    <section class="algorithms flex flex-row py-6 mt-3 justify-center items-center w-4/6 border-8 border-gray-200 rounded-2xl">
         <button id="bubble" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Bubble Sort</button>
         <button id="merge" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Merge Sort</button>
         <button id="quick" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Quick Sort</button>
         <button id="heap" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Heap Sort</button>
     </section>
 
-    <section class="visualization my-16 flex flex-row items-end bg-gray-200 h-96 w-4/6 text-base">
+    <section class="sliders flex flex-row py-6 mt-3 justify-center items-center w-4/6 border-8 border-gray-200 rounded-2xl">
+        <div class="slidecontainer flex flex-row items-center">
+            <p class="px-4">Delay:</p>
+            <input type="range" min="1" max="100" value="50" class="slider appearance-none h-3 w-60 bg-gray-200 rounded-lg" id="speedSlider">
+            <p class="px-4" id="speedSliderValue"></p>
+        </div>
+    </section>
+
+    <section class="visualization my-16 flex flex-row items-end bg-gray-200 h-96 w-4/6 text-base border-2 border-black">
 
     </section>
 
@@ -44,7 +48,7 @@
     <script>
         var arr = [];
 
-        arr = generateArray(arr, 25);
+        arr = generateArray(arr, parseInt(document.getElementById("sizeSlider").value));
 
         document.getElementById("generate").onclick = function() {
             arr = generateArray(arr, parseInt(document.getElementById("sizeSlider").value));

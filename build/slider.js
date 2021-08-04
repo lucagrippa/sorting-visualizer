@@ -9,9 +9,9 @@ sizeSlider.oninput = function() {
 
 var speedSlider = document.getElementById("speedSlider");
 var speedSliderValue = document.getElementById("speedSliderValue");
-speedSliderValue.innerHTML = speedSlider.value; // Display the default slider value
+speedSliderValue.innerHTML = speedSlider.value + " ms"; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 speedSlider.oninput = function() {
-    speedSliderValue.innerHTML = this.value;
+    speedSliderValue.innerHTML = this.value + " ms";
 }
