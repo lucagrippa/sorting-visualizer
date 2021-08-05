@@ -5,55 +5,97 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sorting Algorithms</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="flex flex-col justify-center items-center pt-16">
-    <section class="sliders flex flex-row py-4 mt-24 justify-center items-center w-4/6 border-8 border-gray-200 rounded-2xl">
-        <button id="generate" class=" mx-10 py-3 px-4 rounded-3xl border-4 hover:border-blue-300 border-green-500">Generate Array</button>
+<body class="flex flex-row justify-start items-center w-full h-full text-coolGray-90  bg-gradient-to-br from-green-400  to-blue-500">
+    <div class="flex flex-row justify-start items-center w-full min-h-screen bg-coolGray-100 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-80 ">
 
-        <div class="slidecontainer flex flex-row items-center">
-            <p class="px-4">Size:</p>
-            <input type="range" min="5" max="1000" value="50" class="slider appearance-none h-3 w-60 bg-gray-200 rounded-lg" id="sizeSlider">
-            <p class="px-4" id="sizeSliderValue"></p>
-        </div>
+        <section class="algorithms h-screen flex flex-col py-12 my-12 ml-6 mr-12 justify-center w-1/6 rounded-3xl text-lg text-coolGray-900 bg-coolGray-50 shadow-sm">
+            <h2 class="text-xl font-semibold ml-8 mb-3">Sorting Algorithms</h2>
+            <button id="bubble" class="algorithms mx-6 mt-6 py-2 pl-5 text-left rounded-2xl bg-coolGray-200 hover:bg-coolGray-200 hover:bg-opacity-80">Bubble Sort</button>
+            <button id="merge" class="algorithms mx-6 mt-6 py-2 pl-5 text-left rounded-2xl hover:bg-coolGray-200 hover:bg-opacity-80">Merge Sort</button>
+            <button id="quick" class="algorithms mx-6 mt-6 py-2 pl-5 text-left rounded-2xl hover:bg-coolGray-200 hover:bg-opacity-80">Quick Sort</button>
+            <button id="heap" class="algorithms mx-6 mt-6 py-2 pl-5 text-left rounded-2xl  hover:bg-coolGray-200 hover:bg-opacity-80">Heap Sort</button>
+        </section>
 
-    </section>
+        <main class="flex flex-col items-start rounded-3xl text-coolGray-900 w-auto bg-coolGray-50 shadow-sm">
 
-    <section class="algorithms flex flex-row py-6 mt-3 justify-center items-center w-4/6 border-8 border-gray-200 rounded-2xl">
-        <button id="bubble" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Bubble Sort</button>
-        <button id="merge" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Merge Sort</button>
-        <button id="quick" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Quick Sort</button>
-        <button id="heap" class=" mx-10 py-3 px-4 rounded-3xl border-4 border-blue-400">Heap Sort</button>
-    </section>
+            <section class="flex flex-col items-start w-full px-16 pt-16">
+                <section class="sliders flex flex-row justify-start items-center w-full">
+                    <button id="generate" class="mx-10 py-3 px-8 rounded-3xl bg-emerald-500 bg-opacity-80 hover:border-blue-300">Generate Array</button>
+                    <div class="slidecontainer flex flex-row items-center">
+                        <p class="px-4">Size:</p>
+                        <input type="range" min="5" max="1000" value="50" class="slider appearance-none h-3 w-60 bg-coolGray-200 rounded-lg" id="sizeSlider">
+                        <p class="px-4" id="sizeSliderValue"></p>
+                    </div>
+                </section>
 
-    <section class="sliders flex flex-row py-6 mt-3 justify-center items-center w-4/6 border-8 border-gray-200 rounded-2xl">
-        <button id="sort" class=" mx-10 py-3 px-4 rounded-3xl border-4 hover:border-blue-300 border-green-500">Sort!</button>
+                <section class="sliders flex flex-row py-8 justify-start items-center w-full border-b-2">
+                    <button id="sort" class=" mx-10 py-3 px-16 rounded-3xl bg-blue-500 bg-opacity-80">Sort!</button>
+                    <div class="slidecontainer flex flex-row items-center">
+                        <p class="px-4">Delay:</p>
+                        <input type="range" min="1" max="100" value="50" class="slider appearance-none h-3 w-60 bg-coolGray-200 rounded-lg" id="speedSlider">
+                        <p class="px-4" id="speedSliderValue"></p>
+                    </div>
+                </section>
 
-        <div class="slidecontainer flex flex-row items-center">
-            <p class="px-4">Delay:</p>
-            <input type="range" min="1" max="100" value="50" class="slider appearance-none h-3 w-60 bg-gray-200 rounded-lg" id="speedSlider">
-            <p class="px-4" id="speedSliderValue"></p>
-        </div>
-    </section>
+            </section>
 
-    <section class="flex flex-row py-6 mt-3 justify-center items-center w-4/6">
-        <div class="grid grid-cols-4 grid-rows-2 gap-x-20 gap-y-6 text-center text-lg">
-            <p>Algorithm:</p>
-            <p>Best Case:</p>
-            <p>Average Case:</p>
-            <p>Worst Case:</p>
-            <p id="algorithm"></p>
-            <p id="best-case"></p>
-            <p id="average-case"></p>
-            <p id="worst-case"></p>
-        </div>
-    </section>
+            <section class="flex flex-col items-start w-full px-16 pt-8 pb-16">
 
-    <section class="visualization my-6 flex flex-row items-end bg-gray-200 h-96 w-4/6 text-base border-2 border-black">
+                <section class="flex flex-row w-full">
+                    <section class="visualization mb-8 px-8 flex flex-row items-end h-96 w-4/6 text-base border-b-2 border-coolGray-200">
 
-    </section>
+                    </section>
+
+                    <section class="flex flex-col mx-8 mb-8 px-8 justify-around text-center text-coolGray-800 text-lg font-medium rounded-3xl bg-yellow-400 bg-opacity-60 shadow-sm">
+                        <div class="">
+                            <p class="py-2 ">Comparrisons</p>
+                            <p class="py-2 ">1000</p>
+                        </div>
+                        <div class="">
+                            <p class="py-2 ">Comparrisons</p>
+                            <p class="py-2 ">1000</p>
+                        </div>
+                        <div class="">
+                            <p class="py-2 ">Comparrisons</p>
+                            <p class="py-2 ">1000</p>
+                        </div>
+                    </section>
+
+                </section>
+
+
+
+                <section class="flex flex-col py-8 justify-center items-center w-full rounded-3xl border-2">
+                    <div class="flex flex-row justify-around w-full text-center text-lg font-medium text-coolGray-900 ">
+                        <div>
+                            <p class="pb-4">Algorithm:</p>
+                            <p id="algorithm">Bubble Sort</p>
+                        </div>
+                        <div>
+                            <p class="pb-4">Best Case:</p>
+                            <p id="best-case">O(N)</p>
+                        </div>
+                        <div>
+                            <p class="pb-4">Average Case:</p>
+                            <p id="average-case">O(N^2)</p>
+                        </div>
+                        <div>
+                            <p class="pb-4">Worst Case:</p>
+                            <p id="worst-case">O(N^2)</p>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
 
     <script src="slider.js"></script>
     <script src="generate-histogram.js"></script>
@@ -70,8 +112,11 @@
             arr = generateArray(arr, parseInt(document.getElementById("sizeSlider").value));
         }
 
+
         document.getElementById("bubble").onclick = function() {
             sort = 0;
+            Array.from(document.querySelectorAll('.algorithms')).forEach((el) => el.classList.remove('bg-coolGray-200'));
+            document.getElementById("bubble").classList.add("bg-coolGray-200");
             document.getElementById("algorithm").innerHTML = "Bubble Sort";
             document.getElementById("best-case").innerHTML = "O(N)";
             document.getElementById("average-case").innerHTML = "O(N^2)";
@@ -80,6 +125,8 @@
 
         document.getElementById("merge").onclick = function() {
             sort = 1;
+            Array.from(document.querySelectorAll('.algorithms')).forEach((el) => el.classList.remove('bg-coolGray-200'));
+            document.getElementById("merge").classList.add("bg-coolGray-200");
             document.getElementById("algorithm").innerHTML = "Merge Sort";
             document.getElementById("best-case").innerHTML = "O(N log(N))";
             document.getElementById("average-case").innerHTML = "O(N log(N))";
@@ -88,6 +135,8 @@
 
         document.getElementById("quick").onclick = function() {
             sort = 2;
+            Array.from(document.querySelectorAll('.algorithms')).forEach((el) => el.classList.remove('bg-coolGray-200'));
+            document.getElementById("quick").classList.add("bg-coolGray-200");
             document.getElementById("algorithm").innerHTML = "Quick Sort";
             document.getElementById("best-case").innerHTML = "O(N log(N))";
             document.getElementById("average-case").innerHTML = "O(N log(N))";
@@ -96,6 +145,8 @@
 
         document.getElementById("heap").onclick = function() {
             sort = 3;
+            Array.from(document.querySelectorAll('.algorithms')).forEach((el) => el.classList.remove('bg-coolGray-200'));
+            document.getElementById("heap").classList.add("bg-coolGray-200");
             document.getElementById("algorithm").innerHTML = "Heap Sort";
             document.getElementById("best-case").innerHTML = "O(N log(N))";
             document.getElementById("average-case").innerHTML = "O(N log(N))";

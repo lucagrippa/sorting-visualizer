@@ -1,18 +1,27 @@
 {
-    "name": "sorting-visualization",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "build": "postcss css/styles.css -o build/styles.css"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "autoprefixer": "^10.2.6",
-        "postcss": "^8.3.5",
-        "postcss-cli": "^8.3.1",
-        "tailwindcss": "^2.2.4"
-    }
+  "name": "sorting-visualization",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "postcss css/styles.css -o build/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.4"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grippal/sorting-visualization.git"
+  },
+  "bugs": {
+    "url": "https://github.com/grippal/sorting-visualization/issues"
+  },
+  "homepage": "https://github.com/grippal/sorting-visualization#readme",
+  "description": ""
 }
