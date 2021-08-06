@@ -9,6 +9,8 @@ async function merge(colors, arr, tmpArr, lo, mid, hi) {
 
     for (let k = lo; k <= hi; k++) { // first we copy over the array to our tmp array
         tmpArr[k] = arr[k];
+        arrayAccesses += 2;
+        document.getElementById("array-accesses").innerHTML = arrayAccesses;
     }
 
     colors[lo] = 1;
@@ -21,15 +23,26 @@ async function merge(colors, arr, tmpArr, lo, mid, hi) {
     for (index = lo; index <= hi; index++) { // index keeps the index of the sorted array
         if (left > mid) { // will merge remaining values in right side of array
             arr[index] = tmpArr[right];
+            arrayAccesses += 2;
+            document.getElementById("array-accesses").innerHTML = arrayAccesses;
             right++;
         } else if (right > hi) { // will merge remaining values in left side of array
             arr[index] = tmpArr[left];
+            arrayAccesses += 2;
+            document.getElementById("array-accesses").innerHTML = arrayAccesses;
             left++;
         } else if (tmpArr[left] < tmpArr[right]) { // checks if value in left array is less than value in right array
+            document.getElementById("comparisons").innerHTML = ++comparisons;
             arr[index] = tmpArr[left];
+            arrayAccesses += 4;
+            document.getElementById("array-accesses").innerHTML = arrayAccesses;
             left++;
         } else {
+            document.getElementById("comparisons").innerHTML = ++comparisons;
             arr[index] = tmpArr[right];
+            arrayAccesses += 4;
+            document.getElementById("array-accesses").innerHTML = arrayAccesses;
+
             right++;
         }
 

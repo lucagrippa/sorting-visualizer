@@ -10,11 +10,11 @@
 </head>
 
 <body class="w-screen h-screen bg-gradient-to-br from-green-400  to-blue-500">
-    <div class="grid grid-cols-5 grid-rows-1 pl-6 items-center w-screen h-screen bg-coolGray-100 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-80 ">
+    <div class="grid grid-cols-5 grid-rows-1 pl-6 items-center w-screen h-screen bg-coolGray-100 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-75 ">
 
-        <section class="sidebar col-span-1  h-5/6 w-full flex flex-col py-12  justify-center rounded-3xl text-base text-coolGray-900 bg-coolGray-50 shadow-sm">
-            <button id="generate" class="mx-10 py-3 px-8 rounded-3xl bg-emerald-500 bg-opacity-80 hover:border-blue-300">Generate Array</button>
-            <button id="sort" class=" mx-10 py-3 px-16 rounded-3xl bg-blue-500 bg-opacity-80">Sort!</button>
+        <section class="sidebar col-span-1  h-5/6 w-full flex flex-col py-12  justify-start rounded-3xl text-base text-coolGray-900 bg-coolGray-50 shadow-sm">
+            <button id="generate" class="mx-10 mt-8 mb-8 py-3 px-8 rounded-3xl bg-emerald-500 bg-opacity-80 hover:border-blue-300">Generate Array</button>
+            <button id="sort" class=" mx-10 mb-16 py-3 px-16 rounded-3xl bg-blue-500 bg-opacity-80">Sort!</button>
             <div class="algorithms flex flex-col w-full">
                 <h2 class="text-xl font-semibold pl-8 pb-3">Sorting Algorithms</h2>
                 <button id="bubble" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl bg-coolGray-200 hover:bg-coolGray-200 hover:bg-opacity-80">Bubble Sort</button>
@@ -24,7 +24,7 @@
             </div>
         </section>
 
-        <main class="col-span-4 flex flex-col h-5/6 w-full mx-16">
+        <main class="col-span-4 flex flex-col h-5/6 w-4/5 mx-16">
 
             <section class="sliders flex flex-row justify-center items-center my-8 w-full text-base font-normal">
                 <div class="slidecontainer flex flex-row justify-center items-center">
@@ -39,24 +39,24 @@
                 </div>
             </section>
 
-            <section class="flex flex-col items-start w-full px-8 pt-8 pb-8 rounded-3xl text-coolGray-900 bg-coolGray-50 shadow-sm">
+            <section class="flex flex-col items-center w-full px-8 pt-8 pb-8 rounded-3xl text-coolGray-900 bg-coolGray-50 shadow-sm">
                 <section class="flex flex-row w-full">
-                    <section class="visualization flex flex-row items-end h-96 w-4/6 mb-8 px-8 text-base border-b-2 border-coolGray-200">
+                    <section class="visualization flex flex-row items-end justify-center h-96 w-4/5 mb-8 px-8 text-base border-b-2 border-coolGray-200">
 
                     </section>
 
-                    <section class="flex flex-col mx-8 mb-8 px-8 justify-around text-center text-coolGray-800 text-base font-medium rounded-3xl bg-yellow-400 bg-opacity-60 shadow-sm">
+                    <section class="flex flex-col mx-8 mb-8 px-3 justify-around text-center text-coolGray-800 text-base font-medium rounded-3xl bg-yellow-400 bg-opacity-60 shadow-sm">
                         <div class="">
-                            <p class="py-2 ">Comparrisons</p>
-                            <p class="py-2 ">1000</p>
+                            <p class="py-1 ">Comparisons:</p>
+                            <p id="comparisons" class="pt-1 pb-6 border-b-2 border-coolGray-50">0</p>
                         </div>
                         <div class="">
-                            <p class="py-2 ">Comparrisons</p>
-                            <p class="py-2 ">1000</p>
+                            <p class="py-1 ">Array Accesses:</p>
+                            <p id="array-accesses" class="pt-1 pb-6 border-b-2 border-coolGray-50">0</p>
                         </div>
                         <div class="">
-                            <p class="py-2 ">Comparrisons</p>
-                            <p class="py-2 ">1000</p>
+                            <p class="py-1 ">Delay:</p>
+                            <p id="delay" class="pt-1 pb-2"> 50 ms</p>
                         </div>
                     </section>
                 </section>
@@ -95,8 +95,17 @@
 <script>
     let arr = [];
     let sort = 0;
+    let comparisons = 0;
+    let arrayAccesses = 0;
 
     arr = generateArray(arr, parseInt(document.getElementById("sizeSlider").value));
+
+    const delaySlider = document.getElementById("speedSlider");
+
+    delaySlider.addEventListener('change', (event) => {
+        const delay = document.getElementById("delay");
+        delay.innerHTML = delaySlider.value;
+    });
 
     document.getElementById("generate").onclick = function() {
         arr = generateArray(arr, parseInt(document.getElementById("sizeSlider").value));
@@ -144,7 +153,9 @@
     }
 
     document.getElementById("sort").onclick = async function() {
-        console.log(sort);
+        comparisons = 0;
+        arrayAccesses = 0;
+
         document.getElementById("sort").disabled = true;
         document.getElementById("generate").disabled = true;
         document.getElementById("bubble").disabled = true;

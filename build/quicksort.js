@@ -3,11 +3,13 @@ function sleep(ms) {
 }
 
 async function swap(colors, arr, index1, index2) {
-
-
     let tmp = arr[index1];
     arr[index1] = arr[index2];
     arr[index2] = tmp;
+
+    arrayAccesses += 4;
+    document.getElementById("array-accesses").innerHTML = arrayAccesses;
+
     await sleep(parseInt(document.getElementById("speedSlider").value));
     generateHistogramWithColors(arr, colors);
 }
@@ -28,6 +30,10 @@ async function partition(colors, arr, lo, hi) {
 
     while (true) {
         while (arr[left] < arr[pivot]) {
+            document.getElementById("comparisons").innerHTML = ++comparisons;
+            arrayAccesses += 2;
+            document.getElementById("array-accesses").innerHTML = arrayAccesses;
+
             colors[left] = 0;
             left++;
             colors[left] = 1;
@@ -37,6 +43,9 @@ async function partition(colors, arr, lo, hi) {
         }
 
         while (arr[right] > arr[pivot]) {
+            document.getElementById("comparisons").innerHTML = ++comparisons;
+            arrayAccesses += 2;
+            document.getElementById("array-accesses").innerHTML = arrayAccesses;
             colors[right] = 0;
             right--;
             colors[right] = -1;
