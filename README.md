@@ -1,5 +1,5 @@
 
-<h1 align="left">Space Invaders</h1>
+<h1 align="left">Sorting Visualizer</h1>
 
 [![Visitor](https://visitor-badge.laobi.icu/badge?page_id=gripal.sorting-visualizer)](https://github.com/grippal) [![GitHub followers](https://img.shields.io/github/followers/grippal.svg?style=social&label=Follow)](https://github.com/grippal?tab=followers)
 
