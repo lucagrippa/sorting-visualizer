@@ -30,6 +30,6 @@ Head over to https://sort.lukegrippa.com to check it out and see sorting in acti
 
 me@lukegrippa.com
 
-Project Link: https://sort.lukegrippa.com
+Project Link: https://lukegrippa.com/sorting.html
 
 Let me know if you have any feedback or ideas for visualizer. Leave a ⭐  if you like it!
